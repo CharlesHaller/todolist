@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}MyBestPro{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+            <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    <div class="left-menu" style="position: fixed">
+        <div class="logo"><i class="fa fa-book"></i>
+            <div>MyBestPro</div>
+        </div>
+        <div class="accordion">
+            <div class="section">
+                <input type="radio" name="accordion-1" id="section-2"/>
+                <label for="section-2"><span>Tâches :</span></label>
+                <div class="content">
+                    <ul>
+                        <a href="{{ path('homepage') }}"><li><i class="fa fa-list-alt"></i><span class="bloc">Index</span></li></a>
+                        <a href="{{ path('task_add') }}"><li><i class="fa fa-plus"></i><span class="bloc">Ajouter</span></li></a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style ="margin-left: 210px; margin-top: 20px">
+        {% block body %}{% endblock %}
+    </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

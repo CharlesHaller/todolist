@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+    <div class="col-xs-6">
+        <ul class="list-group">
+            <li class="list-group-item">Titre : {{ form_widget(form.title) }}</li>
+            <li class="list-group-item">Description : {{ form_widget(form.description) }}</li>
+            <li class="list-group-item">Date de création : {{ form_widget(form.dateCreated) }}</li>
+            <li class="list-group-item">Status : {{ form_widget(form.status) }}</li>
+        </ul>
+        <button id="button" type="submit" class="btn bloc btn-default btn-lg">Modifier</button>
+        <a href="{{ path('task_delete', {'id': task.id}) }}" class="btn bloc btn-default btn-lg">Supprimer</a>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

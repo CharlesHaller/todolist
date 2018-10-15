@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-xs-10">
+        <h2  style="text-align: center; font-weight: 700;color: white; ">Index</h2>
+    </div>
+
+    <table id="data" class="table">
+        <thead>
+        <tr class="filters">
+            <th>Titre</th>
+            <th>Date de création</th>
+            <th>Status</th>
+            <th>Lien</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in taskList %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.dateCreated|date('Y/m/d') }}</td>
+                {% if task.status == true %}
+                    <td>Fait !</td>
+                {% else %}
+                    <td>A faire !</td>
+                {% endif %}
+                <td><a href="{{ path('task_edit', {'id': task.id})}}"  class="btn bloc btn-default btn-lg"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a href="{{ path('task_view', {'id': task.id}) }}" class="btn bloc btn-default btn-lg"><i class="fa fa-search" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('task_add') }}"  class="btn bloc btn-default btn-lg">Ajouter</a>
+{% endblock %}
